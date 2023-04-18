@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Space Explorer</string>
+    <string name="apod_tab">APOD</string>
+    <string name="home_tab">Home</string>
+    <string name="rover_tab">Rover</string>
+    <string name="add_image_button">Add Image</string>
+    <string name="rover_prompt">Select a Rover</string>
+    <string name="camera_prompt">Select a Camera</string>
+
+    <string-array name="rover_options">
+        <item>Curiosity</item>
+        <item>Opportunity</item>
+        <item>Spirit</item>
+    </string-array>
+
+    <string-array name="curiosity_rover_cameras">
+        <item>Front Hazard Avoidance Camera</item>
+        <item>Rear Hazard Avoidance Camera</item>
+        <item>Mast Camera</item>
+        <item>Chemistry and Camera Complex</item>
+        <item>Mars Hand Lens Imager</item>
+        <item>Mars Descent Imager</item>
+        <item>Navigation Camera</item>
+    </string-array>
+
+    <string-array name="opportunity_spirit_rover_cameras">
+        <item>Front Hazard Avoidance Camera</item>
+        <item>Rear Hazard Avoidance Camera</item>
+        <item>Navigation Camera</item>
+        <item>Panoramic Camera</item>
+        <item>Miniature Thermal Emission Spectrometer (Mini-TES)</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

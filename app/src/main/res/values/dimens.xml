@@ -1,0 +1,7 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="general_margin">8dp</dimen>
+    <dimen name="item_height">32sp</dimen>
+    <dimen name="button_round_radius">8dp</dimen>
+</resources>

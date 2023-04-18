@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/rover_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/rover_spinner"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/purple_outline"
+            android:popupBackground="@drawable/purple_outline_white_background"
+            tools:listitem="@layout/rover_spinner"/>
+
+        <Spinner
+            android:id="@+id/rover_camera_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rover_spinner"
+            android:background="@drawable/purple_outline"
+            android:popupBackground="@drawable/purple_outline_white_background"
+            android:spinnerMode="dropdown"
+            android:visibility="visible"
+            tools:listitem="@layout/rover_spinner" />
+
+        <Button
+            android:visibility="visible"
+            android:id="@+id/rover_open_dialog_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_image_button"
+            app:layout_constraintTop_toBottomOf="@+id/rover_camera_spinner"
+            style="@style/style_button"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rover_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/rover_open_dialog_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
