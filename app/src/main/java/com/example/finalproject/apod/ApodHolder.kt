@@ -1,6 +1,5 @@
 package com.example.finalproject.apod
 
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,19 +13,20 @@ class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHol
 
     fun bind(apod:Apod) {
         val date = inputDateFormat.parse(apod.date)
-        Log.d("ApodHolder", "Binding $apod")
+//        Log.d("ApodHolder", "Binding $apod")
         binding.apodTitle.text = apod.title
         binding.apodDate.text = outputDateFormat.format(date!!)
         binding.apodDescription.text = apod.explanation
         Glide.with(itemView.context)
             .load(apod.url)
+            .override(RecyclerView.LayoutParams.MATCH_PARENT)
             .into(binding.apodImageView)
 
         binding.apodImageView.contentDescription = apod.explanation
 
         binding.root.setOnClickListener {
             if(binding.apodDescription.maxLines == 1) {
-                binding.apodDescription.maxLines = 50
+                binding.apodDescription.maxLines = binding.apodDescription.lineCount
             } else {
                 binding.apodDescription.maxLines = 1
             }

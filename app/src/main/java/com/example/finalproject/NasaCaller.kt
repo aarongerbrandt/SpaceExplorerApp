@@ -3,6 +3,7 @@ package com.example.finalproject
 import android.content.Context
 import android.util.Log
 import com.android.volley.RequestQueue
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.finalproject.apod.Apod
@@ -11,7 +12,6 @@ import com.example.finalproject.rover.RoverImages
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 private const val TAG = "NasaCaller"
 class NasaCaller(context: Context) {
@@ -28,7 +28,7 @@ class NasaCaller(context: Context) {
         queue = Volley.newRequestQueue(context)
     }
 
-    fun getApod(date:String, thumbnail:Boolean=false, callback: (response: Apod) -> Unit) {
+    fun getApod(date:String, thumbnail:Boolean=false, callback: (response: Apod) -> Unit, error_callback: (exception: VolleyError) -> Unit) {
         val finalUrl = APOD_URL + "?date=${date}&thumbs=${thumbnail}&api_key=${API_KEY}"
 
         val jsonRequest = JsonObjectRequest(
@@ -38,7 +38,7 @@ class NasaCaller(context: Context) {
                 callback(apod)
             },
             { error ->
-                Log.e(TAG, error.toString())
+                error_callback(error)
             }
         )
 
@@ -79,7 +79,7 @@ class NasaCaller(context: Context) {
                 callback(rovers)
             },
             { error ->
-                Log.e(TAG, error.toString())
+                Log.e(TAG, "Rover oopsy: $error")
             }
         )
 

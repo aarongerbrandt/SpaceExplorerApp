@@ -1,5 +1,6 @@
 package com.example.finalproject.rover
 
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -16,6 +17,7 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
         binding.roverEarthDate.text = prettyDateFormat.format(rover.earth_date)
         Glide.with(itemView.context)
             .load(rover.img_src)
+            .override(RecyclerView.LayoutParams.MATCH_PARENT)
             .into(binding.roverImageView)
 
         binding.roverImageView.contentDescription = "Image from ${rover.camera_full_name}"
@@ -26,6 +28,20 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
                 "${rover.camera_full_name} clicked!",
                 Toast.LENGTH_SHORT
             ).show()
+        }
+
+        binding.root.setOnLongClickListener {
+            if(binding.roverCamera.visibility == View.GONE) { //TODO: Finish this
+                binding.roverCamera.visibility = View.VISIBLE
+                binding.roverEarthDate.visibility = View.VISIBLE
+                binding.roverImageView.visibility = View.VISIBLE
+            } else {
+                binding.roverCamera.visibility = View.GONE
+                binding.roverEarthDate.visibility = View.GONE
+                binding.roverImageView.visibility = View.GONE
+            }
+
+            true
         }
     }
 }

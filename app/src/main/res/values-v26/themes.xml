@@ -36,6 +36,7 @@
 
     <style name="constraint_list_item">
         <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:paddingVertical">2dp</item>
         <item name="layout_constraintHeight_default">spread</item>
         <item name="layout_constraintHeight_max">100dp</item>
         <item name="layout_constraintHeight_min">50dp</item>
@@ -76,5 +77,7 @@
         <item name="android:popupBackground">@drawable/purple_outline_white_background</item>
         <item name="android:spinnerMode">dropdown</item>
         <item name="listItemLayout">@layout/rover_spinner</item>
+        <item name="android:paddingHorizontal">@dimen/spinner_padding_horizontal</item>
+        <item name="android:paddingVertical">@dimen/spinner_padding_vertical</item>
     </style>
 </resources>

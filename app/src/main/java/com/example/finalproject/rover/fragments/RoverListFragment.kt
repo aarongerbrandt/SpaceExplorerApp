@@ -44,7 +44,7 @@ class RoverListFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             roverListViewModel.rovers.collect { rovers ->
-                Log.d(TAG, "Collecting rovers: $rovers")
+//                Log.d(TAG, "Collecting rovers: $rovers")
                 binding.roverRecyclerView.adapter = RoverListAdapter(rovers)
             }
         }
@@ -99,8 +99,8 @@ class RoverListFragment : Fragment() {
 
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
-                { _, year, monthOfYear, dayOfMonth ->
-                    val date = calendarDateFormatter.parse("$year-$monthOfYear-$dayOfMonth")
+                { _, selectedYear, monthOfYear, dayOfMonth ->
+                    val date = calendarDateFormatter.parse("$selectedYear-$monthOfYear-$dayOfMonth")
                     getImageFromDate(date!!)
                 },
                 year,
