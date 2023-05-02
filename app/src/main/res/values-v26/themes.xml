@@ -10,7 +10,8 @@
         <item name="android:textColor">@color/sea_salt</item>
 
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:padding">4dp</item>
+        <item name="maxWidth">320dp</item>
+        <item name="android:padding">@dimen/light_padding</item>
     </style>
 
     <style name="entry_title">

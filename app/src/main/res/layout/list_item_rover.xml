@@ -39,6 +39,14 @@
             android:contentDescription="@string/rover_img_description_placeholder"
             app:layout_constraintTop_toBottomOf="@id/rover_camera"/>
 
+        <LinearLayout
+            android:id="@+id/rover_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/rover_image_view"
+            android:orientation="vertical"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
