@@ -5,15 +5,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/card_height"
+    android:paddingVertical="@dimen/general_card_padding"
     style="@style/constraint_list_item">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/apod_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/apod_card_background"
-        android:padding="8dp"
+        android:background="@drawable/card_background"
+        android:padding="@dimen/general_card_padding"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
 
@@ -36,8 +36,19 @@
             android:id="@+id/apod_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="2dp"
+            android:paddingVertical="@dimen/img_vertical_padding"
+            android:contentDescription="@string/apod_img_description_placeholder"
             app:layout_constraintTop_toBottomOf="@id/apod_title"/>
+
+        <TextView
+            android:id="@+id/apod_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/apod_image_view"
+            android:ellipsize="marquee"
+            android:maxLines="1"
+            android:textColor="@color/rich_black"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

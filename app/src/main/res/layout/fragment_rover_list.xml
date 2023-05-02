@@ -43,7 +43,8 @@
             android:id="@+id/rover_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/rover_open_dialog_button" />
+            app:layout_constraintTop_toBottomOf="@+id/rover_open_dialog_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
