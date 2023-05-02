@@ -4,4 +4,5 @@
     <dimen name="general_margin">8dp</dimen>
     <dimen name="item_height">32sp</dimen>
     <dimen name="button_round_radius">8dp</dimen>
+    <dimen name="card_height">8dp</dimen>
 </resources>

@@ -5,43 +5,77 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/card_height"
     style="@style/constraint_list_item">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/apod_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/apod_card_background"
+        android:padding="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"
-        style="@style/linear_layout_list_item">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.75"
-            android:orientation="vertical"
-            android:paddingHorizontal="4dp">
-            <TextView
-                android:id="@+id/apod_title"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.7"
-                style="@style/entry_title"/>
-            <TextView
-                android:id="@+id/apod_date"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3"
-                tools:Text="Wed March 22 11 11:56 EST 2023"
-                style="@style/entry_date"/>
+        <TextView
+            android:id="@+id/apod_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:Text="Wed March 22 11 11:56 EST 2023"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/entry_date"/>
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/apod_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/apod_date"
+            style="@style/entry_title"/>
+
         <ImageView
             android:id="@+id/apod_image_view"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            android:paddingVertical="2dp"
+            app:layout_constraintTop_toBottomOf="@id/apod_title"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        style="@style/linear_layout_list_item">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="0.75"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingHorizontal="4dp">-->
+<!--            <TextView-->
+<!--                android:id="@+id/apod_title"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.7"-->
+<!--                style="@style/entry_title"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/apod_date"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="0.3"-->
+<!--                tools:Text="Wed March 22 11 11:56 EST 2023"-->
+<!--                style="@style/entry_date"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/apod_image_view"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="0.25" />-->
+
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <!--            <TextView-->
