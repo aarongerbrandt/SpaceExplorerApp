@@ -1,14 +1,12 @@
 package com.example.finalproject.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.example.finalproject.R
 import com.example.finalproject.apod.Apod
 import com.example.finalproject.apod.ApodListViewModel
@@ -16,8 +14,6 @@ import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.rover.Rover
 import com.example.finalproject.rover.RoverListViewModel
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -27,16 +23,12 @@ class HomeFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val prettyDate = SimpleDateFormat("EEE, MMM d, yy", Locale.US)
-
     private val roverListViewModel: RoverListViewModel by viewModels()
     private val apodListViewModel: ApodListViewModel by viewModels()
 
     private var apods: List<Apod> = emptyList()
     private var rovers: List<Rover> = emptyList()
     private var entryCount = 0
-
-    private val numImagesInCarousel = 2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,10 +57,9 @@ class HomeFragment : Fragment() {
             }
         }.also {
             entryCount = rovers.size + apods.size
-            Log.d("HomeFragment", "$entryCount = ${rovers.size} + ${apods.size}")
+//            Log.d("HomeFragment", "$entryCount = ${rovers.size} + ${apods.size}")
 
             loadWelcomeBanner()
-            loadCarousel()
         }
     }
 
@@ -80,21 +71,5 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun loadCarousel() {
-        for(i in 0 until numImagesInCarousel) {
-            if (apods.size > i) {
-                Log.d("LoadCarousel", "Loading carousel: ${apods[i]}")
-                val apod = apods[i]
-                binding.apodTitle.text = apod.title
-                binding.apodDate.text = apod.date
-
-                Glide.with(requireContext())
-                    .load(apod.url)
-                    .into(binding.apodImageView)
-                Log.d("HomeFragment","Loaded: ${apod.title}")
-            }
-        }
-
-    }
 
 }

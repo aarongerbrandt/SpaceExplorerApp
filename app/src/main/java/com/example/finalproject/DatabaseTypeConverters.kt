@@ -14,7 +14,7 @@ class DatabaseTypeConverters {
 
     @TypeConverter
     fun toDate(date: String): Date {
-        return nasaFormat.parse(date)!!
+        return nasaFormat.parse(date)
     }
 
     @TypeConverter

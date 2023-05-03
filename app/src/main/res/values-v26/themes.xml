@@ -80,4 +80,11 @@
         <item name="android:paddingHorizontal">@dimen/spinner_padding_horizontal</item>
         <item name="android:paddingVertical">@dimen/spinner_padding_vertical</item>
     </style>
+
+    <style name="app_intro">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/rich_black</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
 </resources>

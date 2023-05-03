@@ -24,8 +24,8 @@
             android:textAlignment="center"
             android:textSize="32sp"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/apod_card"
+        <LinearLayout
+            android:id="@+id/intro_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/card_background"
@@ -34,39 +34,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/apod_date"
+                android:id="@+id/app_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:Text="Wed March 22 11 11:56 EST 2023"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/entry_date"/>
+                android:text="@string/app_intro"
+                style="@style/app_intro"/>
 
-            <TextView
-                android:id="@+id/apod_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/apod_date"
-                style="@style/entry_title"/>
-
-            <ImageView
-                android:id="@+id/apod_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/img_vertical_padding"
-                android:contentDescription="@string/apod_img_description_placeholder"
-                app:layout_constraintTop_toBottomOf="@id/apod_title"/>
-
-            <TextView
-                android:id="@+id/apod_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/apod_image_view"
-                android:ellipsize="marquee"
-                android:maxLines="1"
-                android:textColor="@color/rich_black"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </LinearLayout>
 

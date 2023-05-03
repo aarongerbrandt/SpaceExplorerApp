@@ -35,7 +35,7 @@ class RoverListFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val calendarDateFormatter = SimpleDateFormat("yyyy-m-d", Locale.US)
+    private val calendarDateFormatter = SimpleDateFormat("yyyy-MM-d", Locale.US)
 
     private var selectedRover:String? = null
     private var selectedCamera:String? = null

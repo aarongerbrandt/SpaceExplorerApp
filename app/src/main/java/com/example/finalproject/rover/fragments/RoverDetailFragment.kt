@@ -12,12 +12,6 @@ import com.example.finalproject.rover.Rover
 class RoverDetailFragment(private var rover:Rover): Fragment() {
     private lateinit var binding:FragmentRoverDetailBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
