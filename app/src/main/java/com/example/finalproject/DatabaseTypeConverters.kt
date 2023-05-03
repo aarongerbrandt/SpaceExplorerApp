@@ -5,16 +5,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DatabaseTypeConverters {
-    private val dateFormatter = SimpleDateFormat("yyyy-mm-dd", Locale.US)
+    private val nasaFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     @TypeConverter
     fun fromDate(date: Date):String {
-        return dateFormatter.format(date)
+        return nasaFormat.format(date)
     }
 
     @TypeConverter
     fun toDate(date: String): Date {
-        return dateFormatter.parse(date)!!
+        return nasaFormat.parse(date)
     }
 
     @TypeConverter

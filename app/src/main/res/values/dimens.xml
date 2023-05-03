@@ -4,4 +4,9 @@
     <dimen name="general_margin">8dp</dimen>
     <dimen name="item_height">32sp</dimen>
     <dimen name="button_round_radius">8dp</dimen>
+    <dimen name="general_card_padding">8dp</dimen>
+    <dimen name="img_vertical_padding">2dp</dimen>
+    <dimen name="light_padding">4dp</dimen>
+    <dimen name="spinner_padding_horizontal">4dp</dimen>
+    <dimen name="spinner_padding_vertical">4dp</dimen>
 </resources>

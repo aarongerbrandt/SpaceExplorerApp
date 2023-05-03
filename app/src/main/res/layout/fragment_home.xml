@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".home.HomeFragment"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingVertical="7.5dp"
-        style="@style/Ubuntu_Bold"
-        android:text="@string/home_tab"
-        android:textColor="@color/white"
-        android:textAllCaps="true"
-        android:textFontWeight="700"
-        android:textAlignment="center"
-        android:textSize="32sp"/>
+        <TextView
+            android:id="@+id/home_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="7.5dp"
+            style="@style/Ubuntu_Bold"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            app:fontWeight="700"
+            android:textAlignment="center"
+            android:textSize="32sp"/>
+
+        <LinearLayout
+            android:id="@+id/intro_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:padding="@dimen/general_card_padding"
+            android:layout_toEndOf="@id/home_banner"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/app_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_intro"
+                style="@style/app_intro"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

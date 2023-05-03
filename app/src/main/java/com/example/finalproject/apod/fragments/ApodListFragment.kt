@@ -2,9 +2,11 @@ package com.example.finalproject.apod.fragments
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +18,6 @@ import com.example.finalproject.databinding.FragmentApodListBinding
 import kotlinx.coroutines.launch
 import java.util.*
 
-private const val TAG = "ApodListFragment"
 class ApodListFragment: Fragment() {
     private lateinit var api:NasaCaller
 
@@ -64,12 +65,25 @@ class ApodListFragment: Fragment() {
 
     private fun getImageFromDate(date:String) {
         api.getApod(date, callback = { apodResponse ->
+            Log.d("ApodVolleySuccess", "Adding: $apodResponse")
             apodListViewModel.addApod(apodResponse)
             viewLifecycleOwner.lifecycleScope.launch {
                 apodListViewModel.apods.collect { apods ->
                     binding.apodRecyclerView.adapter = ApodListAdapter(apods)
                 }
             }
+        },
+        error_callback = { volleyError ->
+            Log.d("ApodVolleyError", "Got error: ${volleyError.networkResponse.statusCode}")
+            val response = when(volleyError.networkResponse.statusCode) {
+                400 -> "Invalid date! You can only request the current date or earlier."
+                else -> "There was an error retrieving your image. Try again."
+            }
+            Toast.makeText(
+                requireContext(),
+                response,
+                Toast.LENGTH_LONG
+            ).show()
         })
     }
 
@@ -83,8 +97,8 @@ class ApodListFragment: Fragment() {
 
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
-                { _, year, monthOfYear, dayOfMonth ->
-                    getImageFromDate("${"%04d".format(year)}-${"%02d".format(monthOfYear+1)}-${"%02d".format(dayOfMonth)}")
+                { _, selectedYear, monthOfYear, dayOfMonth ->
+                    getImageFromDate("${"%04d".format(selectedYear)}-${"%02d".format(monthOfYear+1)}-${"%02d".format(dayOfMonth)}")
                 },
                 year,
                 month,

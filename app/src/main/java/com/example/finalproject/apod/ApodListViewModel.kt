@@ -1,9 +1,12 @@
 package com.example.finalproject.apod
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.ApodRepository
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -11,7 +14,7 @@ import java.util.*
 class ApodListViewModel: ViewModel() {
     private val apodRepo = ApodRepository.get()
 
-    private val dateFormat = SimpleDateFormat("yyyy-mm-dd", Locale.US)
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     private val _apods: MutableStateFlow<List<Apod>> = MutableStateFlow(emptyList())
     val apods: StateFlow<List<Apod>>
@@ -29,8 +32,11 @@ class ApodListViewModel: ViewModel() {
 
     fun addApod(apod:Apod) {
         viewModelScope.launch {
-            if(apodRepo.countResponseByDate(apod.date) == 0) {
+            val count = apodRepo.countResponseByDate(apod.date)
+            if(count == 0) {
                 apodRepo.addApodResponse(apod)
+            } else {
+                Log.d("ApodListViewModel", "Count: $count")
             }
         }
     }
