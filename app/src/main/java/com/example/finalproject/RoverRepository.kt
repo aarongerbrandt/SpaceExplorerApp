@@ -23,6 +23,7 @@ class RoverRepository private constructor(context: Context){
     }
     suspend fun addRoverResponse(rover: Rover) = database.roverDao().insert(rover)
     suspend fun countResponseByImageId(id:Long) = database.roverDao().countResponsesByImageId(id)
+    suspend fun countRovers() = database.roverDao().countResponses()
 
     companion object {
         private var INSTANCE: RoverRepository? = null

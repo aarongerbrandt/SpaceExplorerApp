@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -36,8 +37,9 @@ class RoverListFragment : Fragment() {
 
     private val calendarDateFormatter = SimpleDateFormat("yyyy-m-d", Locale.US)
 
-    private lateinit var selectedRover:String
-    private lateinit var selectedCamera:String
+    private var selectedRover:String? = null
+    private var selectedCamera:String? = null
+        set(value) { field = value?.let { getCameraShortName(it) } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -76,15 +78,23 @@ class RoverListFragment : Fragment() {
     }
 
     private fun getImageFromDate(date:Date) {
-        api.getRover(date, "curiosity", callback = { rovers ->
-            Log.d(TAG, rovers.toString())
-            roverListViewModel.addRovers(rovers)
-            viewLifecycleOwner.lifecycleScope.launch {
-                roverListViewModel.rovers.collect { rovers ->
-                    binding.roverRecyclerView.adapter = RoverListAdapter(rovers)
+        if(date == null || selectedCamera == null || selectedRover == null) {
+            Toast.makeText(
+                requireContext(),
+                "You must select a rover, camera and date first.",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+            api.getRover(date, selectedRover!!, selectedCamera!!, callback = { rovers ->
+                Log.d(TAG, rovers.toString())
+                roverListViewModel.addRovers(rovers)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    roverListViewModel.rovers.collect { rovers ->
+                        binding.roverRecyclerView.adapter = RoverListAdapter(rovers)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     private fun addButtonListener() {
@@ -183,6 +193,21 @@ class RoverListFragment : Fragment() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
+    }
+
+    private fun getCameraShortName(longName: String): String? {
+        return when(longName) {
+            "Front Hazard Avoidance Camera" -> "FHAZ"
+            "Rear Hazard Avoidance Camera" -> "RHAZ"
+            "Mast Camera" -> "MAST"
+            "Chemistry and Camera Complex" -> "CHEMCAM"
+            "Mars Hand Lens Imager" -> "MAHLI"
+            "Mars Descent Imager" -> "MARDI"
+            "Navigation Camera" -> "NAVCAM"
+            "Panoramic Camera" -> "PANCAM"
+            "Miniature Thermal Emission Spectrometer (Mini-TES)" -> "MINITES"
+            else -> null
         }
     }
 }

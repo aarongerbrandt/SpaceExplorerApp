@@ -8,12 +8,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHolder(binding.root) {
-    private val inputDateFormat = SimpleDateFormat("yyyy-mm-dd", Locale.US)
+    private val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
     private val outputDateFormat = SimpleDateFormat("EEE, MMM d, yy", Locale.US)
 
     fun bind(apod:Apod) {
         val date = inputDateFormat.parse(apod.date)
-//        Log.d("ApodHolder", "Binding $apod")
+        // Add APOD entity's data to Card
         binding.apodTitle.text = apod.title
         binding.apodDate.text = outputDateFormat.format(date!!)
         binding.apodDescription.text = apod.explanation
@@ -26,7 +26,7 @@ class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHol
 
         binding.root.setOnClickListener {
             if(binding.apodDescription.maxLines == 1) {
-                binding.apodDescription.maxLines = binding.apodDescription.lineCount
+                binding.apodDescription.maxLines = 200
             } else {
                 binding.apodDescription.maxLines = 1
             }

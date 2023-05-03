@@ -15,6 +15,9 @@ interface RoverDao {
     @Query("SELECT * FROM rover WHERE image_id=(:id)")
     suspend fun getResponseFromId(id: Long): Rover
 
+    @Query("SELECT COUNT(*) FROM rover")
+    suspend fun countResponses(): Int
+
     @Query("SELECT COUNT(*) FROM rover WHERE image_id=(:id)")
     suspend fun countResponsesByImageId(id: Long): Int
 

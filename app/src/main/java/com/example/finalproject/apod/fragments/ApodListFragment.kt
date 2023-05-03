@@ -2,6 +2,7 @@ package com.example.finalproject.apod.fragments
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,6 +65,7 @@ class ApodListFragment: Fragment() {
 
     private fun getImageFromDate(date:String) {
         api.getApod(date, callback = { apodResponse ->
+            Log.d("ApodVolleySuccess", "Adding: $apodResponse")
             apodListViewModel.addApod(apodResponse)
             viewLifecycleOwner.lifecycleScope.launch {
                 apodListViewModel.apods.collect { apods ->
@@ -72,12 +74,11 @@ class ApodListFragment: Fragment() {
             }
         },
         error_callback = { volleyError ->
-            val statusCode = volleyError.networkResponse.statusCode
-            val response = when(statusCode) {
+            Log.d("ApodVolleyError", "Got error: ${volleyError.networkResponse.statusCode}")
+            val response = when(volleyError.networkResponse.statusCode) {
                 400 -> "Invalid date! You can only request the current date or earlier."
                 else -> "There was an error retrieving your image. Try again."
             }
-            if(volleyError.networkResponse.statusCode == 400)
             Toast.makeText(
                 requireContext(),
                 response,

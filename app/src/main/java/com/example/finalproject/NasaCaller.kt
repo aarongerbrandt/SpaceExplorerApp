@@ -18,7 +18,7 @@ class NasaCaller(context: Context) {
     private val APOD_URL = "https://api.nasa.gov/planetary/apod/"
     private val ROVER_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
 
-    private val nasaDateFormat = SimpleDateFormat("yyyy-mm-dd", Locale.US)
+    private val nasaDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     private val API_KEY = BuildConfig.API_KEY
     private val queue:RequestQueue
@@ -35,6 +35,7 @@ class NasaCaller(context: Context) {
             finalUrl,
             { response ->
                 val apod = gson.fromJson(response.toString(), Apod::class.java)
+                Log.d("NasaCaller", "Got apod: $apod")
                 callback(apod)
             },
             { error ->
@@ -45,9 +46,11 @@ class NasaCaller(context: Context) {
         queue.add(jsonRequest)
     }
 
-    fun getRover(date:Date, rover: String, callback: (response: List<Rover>) -> Unit) {
+    fun getRover(date:Date, rover: String, camera: String, callback: (response: List<Rover>) -> Unit) {
         val strDate = nasaDateFormat.format(date)
-        val url = ROVER_URL + "${rover}/photos?earth_date=${strDate}&api_key=${API_KEY}"
+        val url = ROVER_URL + "${rover}/photos?earth_date=${strDate}&camera=${camera}&api_key=${API_KEY}"
+
+        Log.d(TAG, "Rover URL: $url")
 
         val jsonRequest = JsonObjectRequest(
             url,

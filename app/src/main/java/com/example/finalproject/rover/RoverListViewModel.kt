@@ -1,5 +1,6 @@
 package com.example.finalproject.rover
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.RoverRepository
@@ -17,8 +18,8 @@ class RoverListViewModel: ViewModel() {
 
     init {
         viewModelScope.launch {
-            roverRepo.getRoverResponses().collect {
-                _rovers.value = it.sortedWith(compareBy { rover ->
+            roverRepo.getRoverResponses().collect { roverList ->
+                _rovers.value = roverList.sortedWith(compareBy { rover ->
                     rover.earth_date
                 }).reversed()
             }
@@ -36,6 +37,12 @@ class RoverListViewModel: ViewModel() {
     fun addRovers(rovers: List<Rover>) {
         for(rover in rovers) {
             addRover(rover)
+        }
+    }
+
+    fun getRoverCount() {
+        viewModelScope.launch {
+            Log.d("RoverListViewModel", roverRepo.countRovers().toString())
         }
     }
 }
