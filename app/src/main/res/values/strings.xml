@@ -8,6 +8,8 @@
     <string name="camera_prompt">Select a Camera</string>
     <string name="rover_img_description_placeholder">Mars Rover Image (placeholder)</string>
     <string name="apod_img_description_placeholder">Astronomy Picture of the Day (placeholder)</string>
+    <string name="home_welcome_message_first">Welcome to Space Explorer!</string>
+    <string name="home_welcome_back_message">Welcome back to Space Explorer!</string>
 
     <string-array name="rover_options">
         <item>Curiosity</item>
