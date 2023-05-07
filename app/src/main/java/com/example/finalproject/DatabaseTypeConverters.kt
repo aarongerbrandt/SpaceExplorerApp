@@ -1,20 +1,19 @@
 package com.example.finalproject
 
 import androidx.room.TypeConverter
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.finalproject.util.DateFormats
+import java.util.Date
+import java.util.UUID
 
 class DatabaseTypeConverters {
-    private val nasaFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-
     @TypeConverter
     fun fromDate(date: Date):String {
-        return nasaFormat.format(date)
+        return DateFormats.NASA_FORMAT.format(date)
     }
 
     @TypeConverter
     fun toDate(date: String): Date {
-        return nasaFormat.parse(date)
+        return DateFormats.NASA_FORMAT.parse(date)
     }
 
     @TypeConverter

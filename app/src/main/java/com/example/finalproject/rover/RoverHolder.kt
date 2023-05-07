@@ -5,16 +5,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.finalproject.databinding.ListItemRoverBinding
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.finalproject.util.DateFormats
 
 class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewHolder(binding.root) {
 
-    private val prettyDateFormat = SimpleDateFormat("EEE, MMM d, yy", Locale.US)
-
     fun bind(rover: Rover) {
         binding.roverCamera.text = rover.camera_name
-        binding.roverEarthDate.text = prettyDateFormat.format(rover.earth_date)
+        binding.roverEarthDate.text = DateFormats.NASA_FORMAT.format(rover.earth_date)
         Glide.with(itemView.context)
             .load(rover.img_src)
             .override(RecyclerView.LayoutParams.MATCH_PARENT)

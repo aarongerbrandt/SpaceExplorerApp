@@ -4,18 +4,15 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.finalproject.databinding.ListItemApodBinding
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.finalproject.util.DateFormats
 
 class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHolder(binding.root) {
-    private val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-    private val outputDateFormat = SimpleDateFormat("EEE, MMM d, yy", Locale.US)
 
     fun bind(apod:Apod) {
-        val date = inputDateFormat.parse(apod.date)
+        val date = DateFormats.NASA_FORMAT.parse(apod.date)
         // Add APOD entity's data to Card
         binding.apodTitle.text = apod.title
-        binding.apodDate.text = outputDateFormat.format(date!!)
+        binding.apodDate.text = DateFormats.PRETTY_FORMAT.format(date!!)
         binding.apodDescription.text = apod.explanation
         Glide.with(itemView.context)
             .load(apod.url)

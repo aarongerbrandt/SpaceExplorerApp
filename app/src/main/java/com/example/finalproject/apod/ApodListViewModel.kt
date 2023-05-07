@@ -4,17 +4,14 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.ApodRepository
+import com.example.finalproject.util.DateFormats
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ApodListViewModel: ViewModel() {
     private val apodRepo = ApodRepository.get()
-
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     private val _apods: MutableStateFlow<List<Apod>> = MutableStateFlow(emptyList())
     val apods: StateFlow<List<Apod>>
@@ -24,7 +21,7 @@ class ApodListViewModel: ViewModel() {
         viewModelScope.launch {
             apodRepo.getApodResponses().collect {
                 _apods.value = it.sortedWith(compareBy { apod ->
-                    dateFormat.parse(apod.date)
+                    DateFormats.NASA_FORMAT.parse(apod.date)
                 }).reversed()
             }
         }

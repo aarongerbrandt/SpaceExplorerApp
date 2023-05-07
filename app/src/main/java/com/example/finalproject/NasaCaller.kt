@@ -9,18 +9,14 @@ import com.android.volley.toolbox.Volley
 import com.example.finalproject.apod.Apod
 import com.example.finalproject.rover.Rover
 import com.example.finalproject.rover.RoverImages
+import com.example.finalproject.util.DateFormats
+import com.example.finalproject.util.Urls
 import com.google.gson.Gson
-import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 private const val TAG = "NasaCaller"
 class NasaCaller(context: Context) {
-    private val APOD_URL = "https://api.nasa.gov/planetary/apod/"
-    private val ROVER_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
-
-    private val nasaDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-
-    private val API_KEY = BuildConfig.API_KEY
+    private val apiKey = BuildConfig.API_KEY
     private val queue:RequestQueue
     private val gson = Gson()
 
@@ -28,8 +24,9 @@ class NasaCaller(context: Context) {
         queue = Volley.newRequestQueue(context)
     }
 
-    fun getApod(date:String, thumbnail:Boolean=false, callback: (response: Apod) -> Unit, error_callback: (exception: VolleyError) -> Unit) {
-        val finalUrl = APOD_URL + "?date=${date}&thumbs=${thumbnail}&api_key=${API_KEY}"
+    fun getApod(date:Date, thumbnail:Boolean=false, callback: (response: Apod) -> Unit, error_callback: (exception: VolleyError) -> Unit) {
+        val stringDate = DateFormats.NASA_FORMAT.format(date)
+        val finalUrl = Urls.apodUrl + "?date=${stringDate}&thumbs=${thumbnail}&api_key=${apiKey}"
 
         val jsonRequest = JsonObjectRequest(
             finalUrl,
@@ -47,8 +44,8 @@ class NasaCaller(context: Context) {
     }
 
     fun getRover(date:Date, rover: String, camera: String, callback: (response: List<Rover>) -> Unit) {
-        val strDate = nasaDateFormat.format(date)
-        val url = ROVER_URL + "${rover}/photos?earth_date=${strDate}&camera=${camera}&api_key=${API_KEY}"
+        val strDate = DateFormats.NASA_FORMAT.format(date)
+        val url = Urls.apodUrl + "${rover}/photos?earth_date=${strDate}&camera=${camera}&api_key=${apiKey}"
 
         Log.d(TAG, "Rover URL: $url")
 
@@ -82,7 +79,8 @@ class NasaCaller(context: Context) {
                 callback(rovers)
             },
             { error ->
-                Log.e(TAG, "Rover oopsy: $error")
+                //TODO: Implement Rover error handling
+                Log.e(TAG, "Rover request Error: $error")
             }
         )
 
