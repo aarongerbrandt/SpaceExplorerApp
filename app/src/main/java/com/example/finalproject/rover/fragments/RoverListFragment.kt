@@ -28,10 +28,6 @@ class RoverListFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-//    private var selectedRover:String? = null
-//    private var selectedCamera:String? = null
-//        set(value) { field = value?.let { getCameraShortName(it) } }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -67,7 +63,7 @@ class RoverListFragment : Fragment() {
     }
 
     private fun addButtonListener() {
-        binding.roverOpenDialogButton.setOnClickListener {
+        binding.addRoverFab.setOnClickListener {
             val vp = requireActivity().findViewById(R.id.view_pager) as ViewPager2
             vp.setCurrentItem(NewRoverFragment.FRAGMENT_NUMBER, false)
         }

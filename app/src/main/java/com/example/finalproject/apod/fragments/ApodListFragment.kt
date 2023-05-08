@@ -61,57 +61,14 @@ class ApodListFragment: Fragment() {
         _binding = null
     }
 
-    private fun getImageFromDate(date:String) {
-//        api.getApod(date, callback = { apodResponse ->
-//            Log.d("ApodVolleySuccess", "Adding: $apodResponse")
-//            apodListViewModel.addApod(apodResponse)
-//            viewLifecycleOwner.lifecycleScope.launch {
-//                apodListViewModel.apods.collect { apods ->
-//                    binding.apodRecyclerView.adapter = ApodListAdapter(apods)
-//                }
-//            }
-//        },
-//        error_callback = { volleyError ->
-//            Log.d("ApodVolleyError", "Got error: ${volleyError.networkResponse.statusCode}")
-//            val response = when(volleyError.networkResponse.statusCode) {
-//                400 -> "Invalid date! You can only request the current date or earlier."
-//                else -> "There was an error retrieving your image. Try again."
-//            }
-//            Toast.makeText(
-//                requireContext(),
-//                response,
-//                Toast.LENGTH_LONG
-//            ).show()
-//        })
-    }
-
     private fun addButtonListener() {
-        binding.apodOpenDialogButton.setOnClickListener {
+        binding.addApodFab.setOnClickListener {
             val vp = requireActivity().findViewById(R.id.view_pager) as ViewPager2
             vp.setCurrentItem(NewApodFragment.FRAGMENT_NUMBER, false)
-
-//        binding.apodOpenDialogButton.setOnClickListener {
-//            val c = Calendar.getInstance()
-//
-//            val year = c.get(Calendar.YEAR)
-//            val month = c.get(Calendar.MONTH)
-//            val day = c.get(Calendar.DAY_OF_MONTH)
-//
-//            val datePickerDialog = DatePickerDialog(
-//                requireContext(),
-//                { _, selectedYear, monthOfYear, dayOfMonth ->
-//                    getImageFromDate("${"%04d".format(selectedYear)}-${"%02d".format(monthOfYear+1)}-${"%02d".format(dayOfMonth)}")
-//                },
-//                year,
-//                month,
-//                day
-//            )
-//
-//            datePickerDialog.show()
         }
     }
 
     companion object {
-        val FRAGMENT_NUMBER = 1
+        const val FRAGMENT_NUMBER = 1
     }
 }
