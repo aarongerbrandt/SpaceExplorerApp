@@ -8,6 +8,8 @@ import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
+    private val numTabs = 3
+
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2:ViewPager2
     private lateinit var fragmentPagerAdapter: FragmentPagerAdapter
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupTabs() {
         tabLayout = findViewById(R.id.tab_layout)
         viewPager2 = findViewById(R.id.view_pager)
-        fragmentPagerAdapter = FragmentPagerAdapter(this, 3)
+        fragmentPagerAdapter = FragmentPagerAdapter(this, 7)
         viewPager2.adapter = fragmentPagerAdapter
 
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {

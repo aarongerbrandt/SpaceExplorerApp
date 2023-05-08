@@ -87,4 +87,22 @@
         <item name="android:textColor">@color/rich_black</item>
         <item name="android:justificationMode">inter_word</item>
     </style>
+
+    <style name="light_heading">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+
+        <item name="android:textColor">@color/sea_salt</item>
+    </style>
+    
+    <style name="light_button">
+        <item name="android:textColor">@color/tekhelet</item>
+        
+        <item name="minHeight">30dp</item>
+        <item name="android:backgroundTint">@color/sea_salt</item>
+        <item name="elevation">1dp</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+    </style>
 </resources>

@@ -7,17 +7,22 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.example.finalproject.databinding.FragmentRoverDetailBinding
-import com.example.finalproject.rover.Rover
 
-class RoverDetailFragment(private var rover:Rover): Fragment() {
-    private lateinit var binding:FragmentRoverDetailBinding
+class RoverDetailFragment(
+//    private var rover:Rover
+): Fragment() {
+    private var _binding: FragmentRoverDetailBinding? = null
+    private val binding
+        get() = checkNotNull(_binding) {
+            "Cannot access binding because it is null. Is the view visible?"
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRoverDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentRoverDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,10 +35,14 @@ class RoverDetailFragment(private var rover:Rover): Fragment() {
             }
 
             roverEarthDate.apply {
-                text = rover.earth_date.toString()
+//                text = rover.earth_date.toString()
                 isEnabled = false
             }
         }
 
+    }
+
+    companion object {
+        const val FRAGMENT_NUMBER = 4
     }
 }

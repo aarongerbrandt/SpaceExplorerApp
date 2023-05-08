@@ -37,4 +37,11 @@
         android:layout_height="wrap_content"
         android:text="Boolean"/>
 
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_button"/>
+
+
 </LinearLayout>

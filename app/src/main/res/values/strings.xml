@@ -4,8 +4,13 @@
     <string name="home_tab">Home</string>
     <string name="rover_tab">Rover</string>
     <string name="add_image_button">Add Image</string>
+    <string name="select_date">Select a Date</string>
     <string name="rover_prompt">Select a Rover</string>
+    <string name="select_rover_button">Select Rover</string>
     <string name="camera_prompt">Select a Camera</string>
+    <string name="select_camera_button">Select Camera</string>
+    <string name="rover_no_rover_selected_response">Please select a Rover before selecting a Camera</string>
+    <string name="submit_button">Submit</string>
     <string name="rover_img_description_placeholder">Mars Rover Image (placeholder)</string>
     <string name="apod_img_description_placeholder">Astronomy Picture of the Day (placeholder)</string>
     <string name="home_welcome_message_first">Welcome to Space Explorer!</string>
@@ -34,6 +39,9 @@
         <item>Navigation Camera</item>
         <item>Panoramic Camera</item>
         <item>Miniature Thermal Emission Spectrometer (Mini-TES)</item>
+    </string-array>
+
+    <string-array name="empty_array">
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
