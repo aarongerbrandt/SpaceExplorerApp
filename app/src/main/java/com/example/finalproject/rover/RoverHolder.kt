@@ -11,7 +11,7 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
 
     fun bind(rover: Rover) {
         binding.roverCamera.text = rover.camera_name
-        binding.roverEarthDate.text = DateFormats.NASA_FORMAT.format(rover.earth_date)
+        binding.roverEarthDate.text = DateFormats.SIMPLE_OUTPUT_FORMAT.format(rover.earth_date)
         Glide.with(itemView.context)
             .load(rover.img_src)
             .override(RecyclerView.LayoutParams.MATCH_PARENT)

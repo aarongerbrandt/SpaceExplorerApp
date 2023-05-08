@@ -105,4 +105,13 @@
         <item name="elevation">1dp</item>
         <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
     </style>
+
+    <style name="fab_add">
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="backgroundTint">@color/tekhelet</item>
+
+        <item name="srcCompat">@drawable/ic_plus_24</item>
+        <item name="tint">@color/sea_salt</item>
+    </style>
 </resources>

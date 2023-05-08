@@ -38,7 +38,7 @@ class NewApodFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentNewApodBinding.inflate(inflater, container, false)
 
         api = NasaCaller(requireContext())
@@ -49,6 +49,7 @@ class NewApodFragment : Fragment() {
         return binding.root
     }
 
+    @Suppress("SameParameterValue")
     private fun addDays(dateInMillis: Long, numDays: Int): Date {
         val c = Calendar.getInstance()
         c.timeInMillis = dateInMillis
@@ -56,28 +57,22 @@ class NewApodFragment : Fragment() {
         return c.time
     }
 
-    private fun addDays(date: Date, numDays: Int): Date {
-        val c = Calendar.getInstance()
-        c.time = date
-        c.add(Calendar.DATE, numDays)
-        return c.time
-    }
-
     private fun setUpDatepicker() {
-        var apodStart = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        val apodStart = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         apodStart.set(1995, 5, 16)
 
         val datePicker = MaterialDatePicker
             .Builder
             .datePicker()
             .setTitleText("Select a date")
+            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .setCalendarConstraints(
                 CalendarConstraints.Builder()
                     .setValidator(
                         DateValidatorPointBackward.now()
                     )
                     .setStart(apodStart.timeInMillis)
-                    .setEnd(MaterialDatePicker.todayInUtcMilliseconds() + 1000)
+                    .setEnd(MaterialDatePicker.todayInUtcMilliseconds())
                     .build()
             )
             .build()
