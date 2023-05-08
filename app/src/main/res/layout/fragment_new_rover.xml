@@ -10,10 +10,42 @@
     android:paddingHorizontal="@dimen/general_margin">
 
     <TextView
-        android:id="@+id/select_date_header"
+        android:id="@+id/select_rover_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        style="@style/light_heading"
+        android:text="@string/rover_prompt" />
+
+    <Button
+        android:id="@+id/new_rover_rover"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/select_rover_header"
+        style="@style/light_button"
+        android:text="@string/select_rover_button"/>
+
+    <TextView
+        android:id="@+id/select_camera_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/new_rover_rover"
+        style="@style/light_heading"
+        android:text="@string/select_camera_button" />
+
+    <Button
+        android:id="@+id/new_rover_camera"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/select_camera_header"
+        style="@style/light_button"
+        android:text="@string/select_date"/>
+
+    <TextView
+        android:id="@+id/select_date_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/new_rover_camera"
         style="@style/light_heading"
         android:text="@string/select_date" />
 

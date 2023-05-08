@@ -35,17 +35,15 @@ class NasaCaller(context: Context) {
                 Log.d("NasaCaller", "Got apod: $apod")
                 callback(apod)
             },
-            { error ->
-                error_callback(error)
-            }
+            error_callback
         )
 
         queue.add(jsonRequest)
     }
 
-    fun getRover(date:Date, rover: String, camera: String, callback: (response: List<Rover>) -> Unit) {
+    fun getRover(date:Date, rover: String, camera: String, callback: (response: List<Rover>) -> Unit, error_callback: (exception: VolleyError) -> Unit) {
         val strDate = DateFormats.NASA_FORMAT.format(date)
-        val url = Urls.apodUrl + "${rover}/photos?earth_date=${strDate}&camera=${camera}&api_key=${apiKey}"
+        val url = Urls.roverUrl + "${rover}/photos?earth_date=${strDate}&camera=${camera}&api_key=${apiKey}"
 
         Log.d(TAG, "Rover URL: $url")
 
@@ -78,10 +76,7 @@ class NasaCaller(context: Context) {
 
                 callback(rovers)
             },
-            { error ->
-                //TODO: Implement Rover error handling
-                Log.e(TAG, "Rover request Error: $error")
-            }
+            error_callback
         )
 
         queue.add(jsonRequest)
