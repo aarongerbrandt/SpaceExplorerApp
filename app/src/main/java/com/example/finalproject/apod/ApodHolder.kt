@@ -1,6 +1,5 @@
 package com.example.finalproject.apod
 
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -9,15 +8,15 @@ import com.example.finalproject.util.DateFormats
 
 class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(apod:Apod) {
-        Log.d("apodHolder bind", "Parsing ${apod.date} -> ${DateFormats.NASA_FORMAT.parse(apod.date)}")
+    fun bind(apod: Apod) {
+//        Log.d("apodHolder bind", "Parsing ${apod.date} -> ${DateFormats.NASA_FORMAT.parse(apod.date)}")
         val date = DateFormats.NASA_FORMAT.parse(apod.date)
         // Add APOD entity's data to Card
         binding.apodTitle.text = apod.title
         binding.apodDate.text = DateFormats.SIMPLE_OUTPUT_FORMAT.format(date!!)
         binding.apodDescription.text = apod.explanation
         Glide.with(itemView.context)
-            .load(apod.url)
+            .load(apod.hd_url ?: apod.url)
             .override(RecyclerView.LayoutParams.MATCH_PARENT)
             .into(binding.apodImageView)
 

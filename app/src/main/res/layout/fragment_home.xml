@@ -24,21 +24,61 @@
             android:textAlignment="center"
             android:textSize="32sp"/>
 
+<!--        <LinearLayout-->
+<!--            android:id="@+id/intro_card"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/card_background"-->
+<!--            android:padding="@dimen/general_card_padding"-->
+<!--            android:layout_toEndOf="@id/home_banner"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/app_intro"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/app_intro"-->
+<!--                style="@style/app_intro"/>-->
+
+<!--        </LinearLayout>-->
+
         <LinearLayout
-            android:id="@+id/intro_card"
+            android:id="@+id/apod_carousel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/card_background"
-            android:padding="@dimen/general_card_padding"
-            android:layout_toEndOf="@id/home_banner"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/app_intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_intro"
-                style="@style/app_intro"/>
+                android:text="APODs"/>
+
+            <com.example.finalproject.home.carousel.CarouselRecyclerView
+                android:id="@+id/apod_carousel_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rover_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rovers"/>
+
+            <com.example.finalproject.home.carousel.CarouselRecyclerView
+                android:id="@+id/rover_carousel_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
 
         </LinearLayout>
 

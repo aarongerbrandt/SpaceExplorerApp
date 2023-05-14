@@ -23,7 +23,7 @@ interface ApodDao {
     suspend fun insertAll(responses: List<Apod>)
 
     @Insert
-    suspend fun insert(apod:Apod)
+    suspend fun insert(apod: Apod)
 
     @Delete
     fun delete(response: Apod)

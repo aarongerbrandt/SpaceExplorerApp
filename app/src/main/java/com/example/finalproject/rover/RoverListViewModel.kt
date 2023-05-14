@@ -1,6 +1,5 @@
 package com.example.finalproject.rover
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.RoverRepository
@@ -26,7 +25,7 @@ class RoverListViewModel: ViewModel() {
         }
     }
 
-    fun addRover(rover:Rover) {
+    fun addRover(rover: Rover) {
         viewModelScope.launch {
             if(roverRepo.countResponseByImageId(rover.image_id) <= 0) {
                 roverRepo.addRoverResponse(rover)
@@ -37,12 +36,6 @@ class RoverListViewModel: ViewModel() {
     fun addRovers(rovers: List<Rover>) {
         for(rover in rovers) {
             addRover(rover)
-        }
-    }
-
-    fun getRoverCount() {
-        viewModelScope.launch {
-            Log.d("RoverListViewModel", roverRepo.countRovers().toString())
         }
     }
 }

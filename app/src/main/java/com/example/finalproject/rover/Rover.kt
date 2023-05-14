@@ -1,7 +1,8 @@
 package com.example.finalproject.rover
 
-import androidx.room.*
-import java.util.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity
 data class Rover(
