@@ -14,7 +14,7 @@ class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHol
         val date = DateFormats.NASA_FORMAT.parse(apod.date)
         // Add APOD entity's data to Card
         binding.apodTitle.text = apod.title
-        binding.apodDate.text = DateFormats.PRETTY_FORMAT.format(date!!)
+        binding.apodDate.text = DateFormats.SIMPLE_OUTPUT_FORMAT.format(date!!)
         binding.apodDescription.text = apod.explanation
         Glide.with(itemView.context)
             .load(apod.url)
@@ -25,7 +25,7 @@ class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHol
 
         binding.root.setOnClickListener {
             if(binding.apodDescription.maxLines == 1) {
-                binding.apodDescription.maxLines = 200
+                binding.apodDescription.maxLines = 1000
             } else {
                 binding.apodDescription.maxLines = 1
             }

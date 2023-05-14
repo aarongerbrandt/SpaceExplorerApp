@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
@@ -17,6 +16,7 @@ import com.example.finalproject.util.DateFormats
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
@@ -33,7 +33,9 @@ class NewApodFragment : Fragment() {
 
     private var selectedDate: Date? = null
 
+    private var datePicker: MaterialDatePicker<Long>? = null
     private lateinit var api: NasaCaller
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +63,7 @@ class NewApodFragment : Fragment() {
         val apodStart = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         apodStart.set(1995, 5, 16)
 
-        val datePicker = MaterialDatePicker
+        datePicker = MaterialDatePicker
             .Builder
             .datePicker()
             .setTitleText("Select a date")
@@ -77,26 +79,26 @@ class NewApodFragment : Fragment() {
             )
             .build()
 
-        datePicker.addOnPositiveButtonClickListener { dateMs ->
+        datePicker!!.addOnPositiveButtonClickListener { dateMs ->
             selectedDate = addDays(dateMs, 1) // For some reason always 1 day behind
             binding.newApodDate.text = DateFormats.SIMPLE_OUTPUT_FORMAT.format(selectedDate!!)
             binding.apodSubmitButton.isEnabled = (selectedDate != null)
         }
 
-        datePicker.addOnCancelListener {
+        datePicker!!.addOnCancelListener {
             binding.apodSubmitButton.isEnabled = (selectedDate != null)
         }
 
-        datePicker.addOnDismissListener {
+        datePicker!!.addOnDismissListener {
             binding.apodSubmitButton.isEnabled = (selectedDate != null)
         }
 
-        datePicker.addOnNegativeButtonClickListener {
+        datePicker!!.addOnNegativeButtonClickListener {
             binding.apodSubmitButton.isEnabled = (selectedDate != null)
         }
 
         binding.newApodDate.setOnClickListener {
-            datePicker.show(
+            datePicker?.show(
                 requireActivity().supportFragmentManager,
                 "MATERIAL_DATE_PICKER"
             )
@@ -120,11 +122,16 @@ class NewApodFragment : Fragment() {
                         400 -> "Invalid date! You can only request the current date or earlier."
                         else -> "There was an error retrieving your image. Try again."
                     }
-                    Toast.makeText(
-                        requireContext(),
+                    Snackbar.make(
+                        binding.coordinatorLayout,
                         response,
-                        Toast.LENGTH_LONG
-                    ).show()
+                        Snackbar.LENGTH_SHORT
+                    ).setAction("Retry") {
+                        datePicker?.show(
+                            requireActivity().supportFragmentManager,
+                            "MATERIAL_DATE_PICKER"
+                        )
+                    }.show()
                 })
         }
     }
