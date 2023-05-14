@@ -76,7 +76,10 @@ class NewRoverFragment : Fragment() {
     private fun setUpRoverButton() {
         val roverOptions = resources.getStringArray(R.array.rover_options)
 
-        val roverDialog = MaterialAlertDialogBuilder(requireContext())
+        val roverDialog = MaterialAlertDialogBuilder(
+            requireContext(),
+
+        )
             .setTitle(R.string.rover_prompt)
             .setCancelable(true)
             .setOnCancelListener {
@@ -86,8 +89,6 @@ class NewRoverFragment : Fragment() {
                 selectedRoverIndex = -1
                 selectedCameraIndex = -1
             }
-
-
 
         binding.newRoverRover.setOnClickListener {
             roverDialog
@@ -212,7 +213,7 @@ class NewRoverFragment : Fragment() {
                     vp.setCurrentItem(RoverListFragment.FRAGMENT_NUMBER, false)
                 },
                 error_callback = { volleyError ->
-                    Log.d("RoverVolleyError", "Got error: ${volleyError.networkResponse.statusCode}")
+                    Log.d("RoverVolleyError", "Got error: ${volleyError.networkResponse?.statusCode}")
                     val response = when(volleyError.networkResponse.statusCode) {
                         400 -> "Invalid date! You can only request the current date or earlier."
                         else -> "There was an error retrieving your image. Try again."
