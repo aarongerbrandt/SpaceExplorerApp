@@ -45,9 +45,9 @@ class RoverDetailFragment : Fragment() {
             .load(rover.img_src)
             .into(binding.roverDisplayImg)
 
-        binding.roverDisplaySol.text = rover.sol.toString()
+        binding.roverDisplaySol.text = "%,d".format(rover.sol)
         binding.roverDisplayDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.earth_date)
-        binding.roverDisplayCameraName.text = "${rover.camera_full_name} (${rover.camera_name})"
+        binding.roverDisplayCameraName.text = getString(R.string.rover_display_camera_name, rover.camera_full_name, rover.camera_name)
 
         binding.roverDisplayName.text = rover.rover_name
         binding.roverDisplayLaunchDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.rover_launch_date)

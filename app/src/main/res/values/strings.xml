@@ -29,6 +29,12 @@
     <string name="rover_landing_date_display_title">Landing Date</string>
     <string name="rover_launch_date_display_title">Launch Date</string>
     <string name="rover_status_display_title">Status</string>
+    <string name="rover_display_camera_name">%s (%s)</string>
+    <string name="apod_description_heading">Image Explanation</string>
+    <string name="apod_display_service_version">Service Version</string>
+    <string name="apod_copyright_heading">Copyright</string>
+    <string name="btn_return_apod">Return to APODs</string>
+    <string name="btn_return_rover">Return to Rovers</string>
 
     <string-array name="rover_options">
         <item>Curiosity</item>

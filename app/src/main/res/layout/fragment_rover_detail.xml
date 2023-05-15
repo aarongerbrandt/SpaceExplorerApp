@@ -327,7 +327,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/btn_main"
-            android:text="Return to Rovers"/>
+            android:text="@string/btn_return_rover"/>
 
     </LinearLayout>
 

@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         style="@style/card_heading"
-                        android:text="Copyright"/>
+                        android:text="@string/apod_copyright_heading"/>
 
                     <View
                         android:id="@+id/sol_spacing"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         style="@style/card_heading"
-                        android:text="Service Version"/>
+                        android:text="@string/apod_display_service_version"/>
 
                     <View
                         android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     style="@style/card_heading"
-                    android:text="Image Explanation"/>
+                    android:text="@string/apod_description_heading"/>
 
                 <View
                     android:layout_width="match_parent"
@@ -165,7 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/btn_main"
-            android:text="Return to APODs"/>
+            android:text="@string/btn_return_apod"/>
 
     </LinearLayout>
 
