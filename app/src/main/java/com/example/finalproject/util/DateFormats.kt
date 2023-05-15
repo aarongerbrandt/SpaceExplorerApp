@@ -8,5 +8,6 @@ class DateFormats {
         val PRETTY_FORMAT = SimpleDateFormat("EEE, MMM d, yy")
         val PRETTY_FORMAT_NO_DAY_NAME = SimpleDateFormat("MMM d, yy")
         val SIMPLE_OUTPUT_FORMAT = SimpleDateFormat("M/d/yyyy")
+        val EXTENDED_SIMPLE_OUTPUT_FORMAT = SimpleDateFormat("MM/dd/yyyy")
     }
 }

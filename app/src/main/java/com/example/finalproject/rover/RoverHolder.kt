@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.finalproject.R
 import com.example.finalproject.databinding.ListItemRoverBinding
 import com.example.finalproject.rover.fragments.RoverDetailFragment
+import com.example.finalproject.util.CurrentEntryData
 import com.example.finalproject.util.DateFormats
 
 class RoverHolder(
@@ -26,6 +27,7 @@ class RoverHolder(
         binding.roverImageView.contentDescription = "Image from ${rover.camera_full_name}"
 
         binding.root.setOnClickListener {
+            CurrentEntryData.currentRover = rover
             val vp = activity.findViewById(R.id.view_pager) as ViewPager2
             vp.setCurrentItem(RoverDetailFragment.FRAGMENT_NUMBER, false)
         }

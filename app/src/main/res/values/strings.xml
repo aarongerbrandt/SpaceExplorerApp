@@ -21,6 +21,14 @@
     <string name="apod_carousel_heading">APODs</string>
     <string name="carousel_image_placeholder">This is an image in the carousel</string>
     <string name="apod_title_detail">Title</string>
+    <string name="sol_display_title">Sol</string>
+    <string name="earth_date_display_title">Earth Date</string>
+    <string name="cam_name_display_title">Camera Name</string>
+    <string name="cam_short_name_display_title">Camera Short Name</string>
+    <string name="rover_name_display_title">Rover Name</string>
+    <string name="rover_landing_date_display_title">Landing Date</string>
+    <string name="rover_launch_date_display_title">Launch Date</string>
+    <string name="rover_status_display_title">Status</string>
 
     <string-array name="rover_options">
         <item>Curiosity</item>

@@ -1,7 +1,6 @@
 package com.example.finalproject.apod
 
 import android.app.Activity
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -9,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.finalproject.R
 import com.example.finalproject.apod.fragments.ApodDetailFragment
 import com.example.finalproject.databinding.ListItemApodBinding
+import com.example.finalproject.util.CurrentEntryData
 import com.example.finalproject.util.DateFormats
 
 class ApodHolder(
@@ -31,8 +31,7 @@ class ApodHolder(
         binding.apodImageView.contentDescription = apod.explanation
 
         binding.root.setOnClickListener {
-            Log.d("APOD HOLDER", "clicked ${apod.id}! Loading")
-            viewModel.currentApod.value = apod
+            CurrentEntryData.currentApod = apod
             val vp = activity.findViewById(R.id.view_pager) as ViewPager2
             vp.setCurrentItem(ApodDetailFragment.FRAGMENT_NUMBER, false)
         }

@@ -1,47 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="Title"/>
-    <EditText
-        android:id="@+id/rover_title"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Enter a title"
-        android:importantForAutofill="no"
-        android:inputType="text"/>
+        android:layout_margin="8dp"
+        android:paddingBottom="40dp"
+        android:padding="@dimen/general_margin">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:text="Details"/>
-    <Button
-        android:id="@+id/rover_earth_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Wed March 22 11 11:56 EST 2023"/>
+        <TextView
+            android:id="@+id/rover_display_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/heading_light" />
 
-    <CheckBox
-        android:id="@+id/rover_bool"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Boolean"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/rover_display_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/rover_img_description_placeholder"
+                style="@style/img_detail" />
+        </RelativeLayout>
 
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/submit_button"/>
+        <LinearLayout
+            android:id="@+id/rover_misc_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
 
-</LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_sol_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/sol_display_title"/>
+
+                    <View
+                        android:id="@+id/sol_spacing"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_sol_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_sol" />
+
+                    <TextView
+                        android:id="@+id/rover_display_sol"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_date_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/earth_date_display_title"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_date_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_date" />
+
+                    <TextView
+                        android:id="@+id/rover_display_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            style="@style/rover_card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/general_margin">
+
+                <TextView
+                    android:id="@+id/rover_camera_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/card_heading"
+                    android:text="@string/cam_name_display_title"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    style="@style/card_spacer"
+                    app:layout_constraintTop_toBottomOf="@id/rover_camera_heading"
+                    app:layout_constraintBottom_toTopOf="@id/rover_display_camera_name"/>
+
+                <TextView
+                    android:id="@+id/rover_display_camera_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    style="@style/card_data"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/rover_rover_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_name_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/rover_name_display_title"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_name_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_name" />
+
+                    <TextView
+                        android:id="@+id/rover_display_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_status_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/rover_status_display_title"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_status_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_status" />
+
+                    <TextView
+                        android:id="@+id/rover_display_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rover_rover_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_launch_date_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/rover_launch_date_display_title"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_launch_date_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_launch_date" />
+
+                    <TextView
+                        android:id="@+id/rover_display_launch_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/rover_landing_date_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="@string/rover_landing_date_display_title"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/rover_landing_date_heading"
+                        app:layout_constraintBottom_toTopOf="@id/rover_display_landing_date" />
+
+                    <TextView
+                        android:id="@+id/rover_display_landing_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.finalproject.apod.Apod
-import com.example.finalproject.apod.ApodListViewModel
 import com.example.finalproject.databinding.FragmentApodDetailBinding
+import com.example.finalproject.util.CurrentEntryData
 
 class ApodDetailFragment : Fragment() {
 
@@ -18,10 +17,7 @@ class ApodDetailFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    private val apodListViewModel: ApodListViewModel by viewModels()
-
-    var apod:Apod? = null
-        get() = apodListViewModel.currentApod.value
+    var apod: Apod? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +26,7 @@ class ApodDetailFragment : Fragment() {
     ): View {
         _binding = FragmentApodDetailBinding.inflate(inflater, container, false)
 
+        apod = CurrentEntryData.currentApod
         loadData(apod)
 
         return binding.root

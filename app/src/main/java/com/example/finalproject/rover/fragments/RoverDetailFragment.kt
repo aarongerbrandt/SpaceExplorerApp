@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.finalproject.databinding.FragmentRoverDetailBinding
+import com.example.finalproject.rover.Rover
+import com.example.finalproject.util.CurrentEntryData
+import com.example.finalproject.util.DateFormats
 
 class RoverDetailFragment : Fragment() {
     private var _binding: FragmentRoverDetailBinding? = null
@@ -20,16 +24,31 @@ class RoverDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRoverDetailBinding.inflate(inflater, container, false)
+
+        val rover: Rover? = CurrentEntryData.currentRover
+
+        if(rover != null) {
+            displayRover(rover)
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun displayRover(rover: Rover) {
+        binding.roverDisplayHeader.text = rover.camera_full_name
 
-        binding.apply {
+        Glide.with(this)
+            .load(rover.img_src)
+            .into(binding.roverDisplayImg)
 
-        }
+        binding.roverDisplaySol.text = rover.sol.toString()
+        binding.roverDisplayDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.earth_date)
+        binding.roverDisplayCameraName.text = "${rover.camera_full_name} (${rover.camera_name})"
 
+        binding.roverDisplayName.text = rover.rover_name
+        binding.roverDisplayLaunchDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.rover_launch_date)
+        binding.roverDisplayLandingDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.rover_landing_date)
+        binding.roverDisplayStatus.text = rover.rover_status.replaceFirstChar {it.uppercase()}
     }
 
     companion object {

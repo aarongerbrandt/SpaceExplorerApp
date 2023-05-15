@@ -99,4 +99,41 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <!-- Cards -->
+    <style name="rover_card">
+        <item name="cardBackgroundColor">@color/sea_salt</item>
+        <item name="checkedIconSize">24dp</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceCornerMedium</item>
+        <item name="strokeColor">@color/rich_black</item>
+        <item name="strokeWidth">3dp</item>
+        <item name="android:layout_margin">@dimen/light_padding</item>
+        <item name="cardCornerRadius">@dimen/carousel_card_corner_radius</item>
+        <item name="minHeight">60dp</item>
+        <item name="minWidth">400dp</item>
+    </style>
+
+    <style name="card_heading" parent="heading_dark">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">@dimen/extra_light_padding</item>
+    </style>
+
+    <style name="card_data" parent="ubuntu_normal">
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="color">@color/tekhelet</item>
+    </style>
+
+    <style name="card_spacer">
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:background">?attr/colorOnSecondary</item>
+    </style>
+
+    <!-- Images -->
+    <style name="img_detail">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">7dp</item>
+<!--        <item name="android:paddingBottom">16dp</item>-->
+        <item name="android:background">@drawable/detail_image_border</item>
+    </style>
+
 </resources>
