@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
             emptyList()
         }
 
-        binding.apodCarouselRecyclerView.adapter = ApodCarouselAdapter(carouselItems.shuffled())
+        binding.apodCarouselRecyclerView.adapter = ApodCarouselAdapter(carouselItems.shuffled(), requireActivity())
         binding.apodCarouselRecyclerView.layoutManager = CarouselLayoutManager()
 
         entryCount += apods.size
@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
             emptyList()
         }
 
-        binding.roverCarouselRecyclerView.adapter = RoverCarouselAdapter(carouselItems.shuffled())
+        binding.roverCarouselRecyclerView.adapter = RoverCarouselAdapter(carouselItems.shuffled(), requireActivity())
         binding.roverCarouselRecyclerView.layoutManager = CarouselLayoutManager()
 
         entryCount += rovers.size

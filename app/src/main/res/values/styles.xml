@@ -39,6 +39,10 @@
         <item name="android:padding">@dimen/light_padding</item>
     </style>
 
+    <style name="btn_return" parent="btn_main">
+
+    </style>
+
     <style name="light_button">
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:backgroundTint">?attr/colorOnPrimary</item>
@@ -132,7 +136,6 @@
     <style name="img_detail">
         <item name="android:scaleType">fitCenter</item>
         <item name="android:padding">7dp</item>
-<!--        <item name="android:paddingBottom">16dp</item>-->
         <item name="android:background">@drawable/detail_image_border</item>
     </style>
 

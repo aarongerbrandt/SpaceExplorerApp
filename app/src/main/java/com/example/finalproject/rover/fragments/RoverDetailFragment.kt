@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentRoverDetailBinding
 import com.example.finalproject.rover.Rover
 import com.example.finalproject.util.CurrentEntryData
@@ -31,6 +33,8 @@ class RoverDetailFragment : Fragment() {
             displayRover(rover)
         }
 
+        loadButton()
+
         return binding.root
     }
 
@@ -49,6 +53,16 @@ class RoverDetailFragment : Fragment() {
         binding.roverDisplayLaunchDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.rover_launch_date)
         binding.roverDisplayLandingDate.text = DateFormats.EXTENDED_SIMPLE_OUTPUT_FORMAT.format(rover.rover_landing_date)
         binding.roverDisplayStatus.text = rover.rover_status.replaceFirstChar {it.uppercase()}
+    }
+
+    private fun loadButton() {
+        val btn = binding.btnRoverReturn
+        btn.setOnClickListener {
+            val vp = requireActivity().findViewById(R.id.view_pager) as ViewPager2
+            vp.setCurrentItem(RoverListFragment.FRAGMENT_NUMBER, false)
+
+            CurrentEntryData.currentRover = null
+        }
     }
 
     companion object {

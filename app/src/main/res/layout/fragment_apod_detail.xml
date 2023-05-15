@@ -1,49 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".apod.fragments.ApodDetailFragment"
-    android:orientation="vertical">
+    tools:context=".apod.fragments.ApodDetailFragment">
 
-    <TextView
-        android:id="@+id/apod_display_title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/apod_display_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/apod_display_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/heading_light" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/apod_display_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/heading_light"/>
 
-        <TableRow>
-            <TextView
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+            <ImageView
+                android:id="@+id/apod_display_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/apod_img_description_placeholder"
+                style="@style/img_detail" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/apod_misc_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/copyright_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="Copyright"/>
+
+                    <View
+                        android:id="@+id/sol_spacing"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/copyright_heading"
+                        app:layout_constraintBottom_toTopOf="@id/apod_display_copyright" />
+
+                    <TextView
+                        android:id="@+id/apod_display_copyright"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/rover_card">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/general_margin">
+
+                    <TextView
+                        android:id="@+id/service_version_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/card_heading"
+                        android:text="Service Version"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        style="@style/card_spacer"
+                        app:layout_constraintTop_toBottomOf="@id/service_version_heading"
+                        app:layout_constraintBottom_toTopOf="@id/apod_display_service_version" />
+
+                    <TextView
+                        android:id="@+id/apod_display_service_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        style="@style/card_data"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/rover_card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Date"/>
-            <TextView
-                android:id="@+id/apod_display_date"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </TableRow>
-    </TableLayout>
+                android:orientation="vertical"
+                android:padding="@dimen/general_margin">
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="@string/apod_title_detail">-->
+                <TextView
+                    android:id="@+id/apod_description_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="@style/card_heading"
+                    android:text="Image Explanation"/>
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/apod_display_title"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50sp"-->
-<!--            android:enabled="false"/>-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    style="@style/card_spacer"
+                    app:layout_constraintTop_toBottomOf="@id/apod_description_heading"
+                    app:layout_constraintBottom_toTopOf="@id/apod_display_description"/>
 
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+                <TextView
+                    android:id="@+id/apod_display_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    style="@style/card_data"/>
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_apod_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/btn_main"
+            android:text="Return to APODs"/>
+
+    </LinearLayout>
+
+</ScrollView>

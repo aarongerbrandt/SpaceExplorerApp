@@ -21,7 +21,8 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
             <ImageView
                 android:id="@+id/rover_display_img"
                 android:layout_width="match_parent"
@@ -320,6 +321,13 @@
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_rover_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/btn_main"
+            android:text="Return to Rovers"/>
 
     </LinearLayout>
 
