@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/new_rover_camera"
         style="@style/heading_light"
-        android:text="@string/select_rover_button" />
+        android:text="@string/select_date" />
 
     <Button
         android:id="@+id/new_rover_date"
