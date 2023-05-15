@@ -8,9 +8,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.example.finalproject.databinding.FragmentRoverDetailBinding
 
-class RoverDetailFragment(
-//    private var rover:Rover
-): Fragment() {
+class RoverDetailFragment : Fragment() {
     private var _binding: FragmentRoverDetailBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
@@ -21,7 +19,7 @@ class RoverDetailFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRoverDetailBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -15,15 +15,11 @@ class ApodDetailFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentApodDetailBinding.inflate(inflater, container, false)
         return binding.root
     }

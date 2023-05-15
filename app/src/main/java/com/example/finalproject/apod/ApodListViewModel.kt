@@ -27,7 +27,7 @@ class ApodListViewModel: ViewModel() {
         }
     }
 
-    fun addApod(apod:Apod) {
+    fun addApod(apod: Apod) {
         viewModelScope.launch {
             val count = apodRepo.countResponseByDate(apod.date)
             if(count == 0) {

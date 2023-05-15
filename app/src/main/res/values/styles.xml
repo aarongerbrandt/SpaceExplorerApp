@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Parent Themes -->
+    <style name="ubuntu_bold">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="fontFamily">@font/ubuntu_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ubuntu_normal">
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- More Specific Styles -->
+    <style name="_gen_heading" parent="ubuntu_bold">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="heading_light" parent="_gen_heading">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="heading_dark" parent="_gen_heading">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="btn_main" parent="heading_light">
+        <item name="android:backgroundTint">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">@color/sea_salt</item>
+
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="maxWidth">@dimen/btn_max_width</item>
+        <item name="android:padding">@dimen/light_padding</item>
+    </style>
+
+    <style name="light_button">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:backgroundTint">?attr/colorOnPrimary</item>
+        <item name="minHeight">@dimen/btn_min_height</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+    </style>
+
+    <!-- Entry Styles -->
+    <style name="entry_title" parent="heading_dark">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="entry_date" parent="ubuntu_normal">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/rich_black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Containers -->
+    <style name="constraint_list_item">
+        <item name="android:paddingLeft">@dimen/light_padding</item>
+        <item name="android:paddingRight">@dimen/light_padding</item>
+        <item name="android:paddingTop">@dimen/extra_light_padding</item>
+        <item name="android:paddingBottom">@dimen/extra_light_padding</item>
+
+        <item name="layout_constraintHeight_default">spread</item>
+        <item name="layout_constraintHeight_max">100dp</item>
+        <item name="layout_constraintHeight_min">50dp</item>
+    </style>
+
+    <style name="container_light">
+        <item name="android:padding">@dimen/general_margin</item>
+        <item name="cornerRadius">@dimen/container_corner_radius</item>
+    </style>
+
+    <!-- FABs -->
+    <style name="fab">
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="backgroundTint">?attr/colorPrimaryVariant</item>
+        <item name="tint">?attr/colorOnPrimary</item>
+
+        <item name="srcCompat">@drawable/ic_plus_24</item>
+    </style>
+
+    <!-- Carousel -->
+    <style name="carousel_heading" parent="heading_light">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <style name="home_carousel">
+        <item name="android:clipChildren">false</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="carousel_image">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+</resources>

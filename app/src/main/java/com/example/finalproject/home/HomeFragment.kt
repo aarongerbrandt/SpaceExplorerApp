@@ -11,8 +11,11 @@ import com.example.finalproject.R
 import com.example.finalproject.apod.Apod
 import com.example.finalproject.apod.ApodListViewModel
 import com.example.finalproject.databinding.FragmentHomeBinding
+import com.example.finalproject.home.carousel.ApodCarouselAdapter
+import com.example.finalproject.home.carousel.RoverCarouselAdapter
 import com.example.finalproject.rover.Rover
 import com.example.finalproject.rover.RoverListViewModel
+import com.google.android.material.carousel.CarouselLayoutManager
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -25,10 +28,9 @@ class HomeFragment : Fragment() {
 
     private val roverListViewModel: RoverListViewModel by viewModels()
     private val apodListViewModel: ApodListViewModel by viewModels()
-
-    private var apods: List<Apod> = emptyList()
-    private var rovers: List<Rover> = emptyList()
     private var entryCount = 0
+
+    private val numItemsInCarousel = 10
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,28 +50,53 @@ class HomeFragment : Fragment() {
     private fun loadElements() {
         viewLifecycleOwner.lifecycleScope.launch {
             apodListViewModel.apods.collect { apodList ->
-                apods = apodList.shuffled()
+                loadApodCarousel(apodList)
             }
         }
+
         viewLifecycleOwner.lifecycleScope.launch {
             roverListViewModel.rovers.collect { roverList ->
-                rovers = roverList.shuffled()
+                loadRoverCarousel(roverList)
             }
-        }.also {
-            entryCount = rovers.size + apods.size
-//            Log.d("HomeFragment", "$entryCount = ${rovers.size} + ${apods.size}")
-
-            loadWelcomeBanner()
         }
     }
 
-    private fun loadWelcomeBanner() {
-        // Count num entries in either database
-        binding.homeBanner.text = when {
-            entryCount > 0 -> getString(R.string.home_welcome_back_message)
-            else -> getString(R.string.home_welcome_message_first)
+    private fun loadApodCarousel(apods: List<Apod>) {
+        binding.apodCarouselRecyclerView.isNestedScrollingEnabled = false
+
+        val carouselItems = if(apods.isNotEmpty()) {
+            binding.apodCarouselRecyclerView.visibility = View.VISIBLE
+            binding.homeBanner.text = getString(R.string.home_welcome_back_message)
+            if(apods.size > numItemsInCarousel) apods.shuffled().subList(0, numItemsInCarousel) else apods
+        } else {
+            binding.apodCarouselRecyclerView.visibility = View.GONE
+            emptyList()
         }
+
+        binding.apodCarouselRecyclerView.adapter = ApodCarouselAdapter(carouselItems.shuffled())
+        binding.apodCarouselRecyclerView.layoutManager = CarouselLayoutManager()
+
+        entryCount += apods.size
     }
 
+    private fun loadRoverCarousel(rovers: List<Rover>) {
+        binding.roverCarouselRecyclerView.isNestedScrollingEnabled = false
+
+
+
+        val carouselItems = if(rovers.isNotEmpty()) {
+            binding.roverCarouselRecyclerView.visibility = View.VISIBLE
+            binding.homeBanner.text = getString(R.string.home_welcome_back_message)
+            if (rovers.size > numItemsInCarousel) rovers.shuffled().subList(0, numItemsInCarousel) else rovers
+        } else {
+            binding.roverCarouselRecyclerView.visibility = View.GONE
+            emptyList()
+        }
+
+        binding.roverCarouselRecyclerView.adapter = RoverCarouselAdapter(carouselItems.shuffled())
+        binding.roverCarouselRecyclerView.layoutManager = CarouselLayoutManager()
+
+        entryCount += rovers.size
+    }
 
 }

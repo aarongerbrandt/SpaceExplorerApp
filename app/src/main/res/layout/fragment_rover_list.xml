@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/add_fab_description"
-            style="@style/fab_add" />
+            style="@style/fab" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

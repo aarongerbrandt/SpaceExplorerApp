@@ -17,6 +17,9 @@
     <string name="home_welcome_message_first">Welcome to Space Explorer!</string>
     <string name="home_welcome_back_message">Welcome back to Space Explorer!</string>
     <string name="app_intro">Welcome to Space Explorer! Here you have unlimited access to browse Nasa\'s Astronomy Picture of the Day (APOD) and Mars Rover image library. To get started, simply selected one of the tabs at the top. To search for an APOD, simply select a day and it will pop up. To search the Mars Rover, you can select between 3 different Rovers, each with their own set of Cameras to choose from.</string>
+    <string name="rover_carousel_heading">Rovers</string>
+    <string name="apod_carousel_heading">APODs</string>
+    <string name="carousel_image_placeholder">This is an image in the carousel</string>
 
     <string-array name="rover_options">
         <item>Curiosity</item>
@@ -42,9 +45,6 @@
         <item>Miniature Thermal Emission Spectrometer (Mini-TES)</item>
     </string-array>
 
-    <string-array name="empty_array">
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="empty_array"/>
 
 </resources>
