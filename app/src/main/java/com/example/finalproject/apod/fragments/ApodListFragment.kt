@@ -32,7 +32,7 @@ class ApodListFragment: Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             apodListViewModel.apods.collect { apods ->
-                binding.apodRecyclerView.adapter = ApodListAdapter(apods)
+                binding.apodRecyclerView.adapter = ApodListAdapter(apods, requireActivity(), apodListViewModel)
             }
         }
     }

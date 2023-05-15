@@ -1,13 +1,21 @@
 package com.example.finalproject.apod
 
+import android.app.Activity
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.example.finalproject.R
+import com.example.finalproject.apod.fragments.ApodDetailFragment
 import com.example.finalproject.databinding.ListItemApodBinding
 import com.example.finalproject.util.DateFormats
 
-class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHolder(binding.root) {
-
+class ApodHolder(
+    private val binding: ListItemApodBinding,
+    private val activity: Activity,
+    private val viewModel: ApodListViewModel
+): RecyclerView.ViewHolder(binding.root) {
     fun bind(apod: Apod) {
         val date = DateFormats.NASA_FORMAT.parse(apod.date)
 
@@ -23,6 +31,13 @@ class ApodHolder(private val binding: ListItemApodBinding): RecyclerView.ViewHol
         binding.apodImageView.contentDescription = apod.explanation
 
         binding.root.setOnClickListener {
+            Log.d("APOD HOLDER", "clicked ${apod.id}! Loading")
+            viewModel.currentApod.value = apod
+            val vp = activity.findViewById(R.id.view_pager) as ViewPager2
+            vp.setCurrentItem(ApodDetailFragment.FRAGMENT_NUMBER, false)
+        }
+
+        binding.apodDescription.setOnClickListener {
             if(binding.apodDescription.maxLines == 1) {
                 binding.apodDescription.maxLines = 1000
             } else {

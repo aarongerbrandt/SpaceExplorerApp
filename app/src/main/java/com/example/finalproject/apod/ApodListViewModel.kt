@@ -1,6 +1,7 @@
 package com.example.finalproject.apod
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.finalproject.ApodRepository
@@ -16,6 +17,8 @@ class ApodListViewModel: ViewModel() {
     private val _apods: MutableStateFlow<List<Apod>> = MutableStateFlow(emptyList())
     val apods: StateFlow<List<Apod>>
         get() = _apods.asStateFlow()
+
+    var currentApod = MutableLiveData<Apod>()
 
     init {
         viewModelScope.launch {

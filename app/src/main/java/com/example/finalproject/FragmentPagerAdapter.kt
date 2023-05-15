@@ -19,14 +19,13 @@ class FragmentPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            // TODO: Organize Rover and APOD fragment numbers
             0 -> HomeFragment()
-            1 -> ApodListFragment()
-            2 -> RoverListFragment()
-            3 -> ApodDetailFragment()
-            4 -> RoverDetailFragment()
             5 -> NewApodFragment()
+            1 -> ApodListFragment()
+            3 -> ApodDetailFragment()
             6 -> NewRoverFragment()
+            2 -> RoverListFragment()
+            4 -> RoverDetailFragment()
             else -> HomeFragment()
         }
     }

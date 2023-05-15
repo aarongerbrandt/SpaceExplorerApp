@@ -20,6 +20,7 @@
     <string name="rover_carousel_heading">Rovers</string>
     <string name="apod_carousel_heading">APODs</string>
     <string name="carousel_image_placeholder">This is an image in the carousel</string>
+    <string name="apod_title_detail">Title</string>
 
     <string-array name="rover_options">
         <item>Curiosity</item>

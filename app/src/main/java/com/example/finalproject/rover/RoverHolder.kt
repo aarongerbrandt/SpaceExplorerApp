@@ -1,13 +1,19 @@
 package com.example.finalproject.rover
 
+import android.app.Activity
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.example.finalproject.R
 import com.example.finalproject.databinding.ListItemRoverBinding
+import com.example.finalproject.rover.fragments.RoverDetailFragment
 import com.example.finalproject.util.DateFormats
 
-class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewHolder(binding.root) {
+class RoverHolder(
+    private val binding: ListItemRoverBinding,
+    private val activity: Activity
+): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(rover: Rover) {
         binding.roverCamera.text = rover.camera_full_name
@@ -19,13 +25,9 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
 
         binding.roverImageView.contentDescription = "Image from ${rover.camera_full_name}"
 
-        // TODO: Add transition
         binding.root.setOnClickListener {
-            Toast.makeText(
-                binding.root.context,
-                "${rover.camera_full_name} clicked!",
-                Toast.LENGTH_SHORT
-            ).show()
+            val vp = activity.findViewById(R.id.view_pager) as ViewPager2
+            vp.setCurrentItem(RoverDetailFragment.FRAGMENT_NUMBER, false)
         }
 
         binding.root.setOnLongClickListener {

@@ -33,7 +33,7 @@ class RoverListFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             roverListViewModel.rovers.collect { rovers ->
-                binding.roverRecyclerView.adapter = RoverListAdapter(rovers)
+                binding.roverRecyclerView.adapter = RoverListAdapter(rovers, requireActivity())
             }
         }
     }
