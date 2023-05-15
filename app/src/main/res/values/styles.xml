@@ -1,51 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="style_button">
+    <!-- Parent Themes -->
+    <style name="ubuntu_bold">
         <item name="android:fontFamily">@font/ubuntu_bold</item>
         <item name="fontFamily">@font/ubuntu_bold</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">26sp</item>
-
-        <item name="android:backgroundTint">@color/blue_steel</item>
-        <item name="android:textColor">@color/sea_salt</item>
-
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="maxWidth">320dp</item>
-        <item name="android:padding">@dimen/light_padding</item>
     </style>
 
-    <style name="entry_title">
-        <item name="android:fontFamily">@font/ubuntu_bold</item>
-        <item name="fontFamily">@font/ubuntu_bold</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
-
-        <item name="android:textColor">@color/rich_black</item>
-        <item name="android:textSize">24sp</item>
-    </style>
-
-    <style name="entry_date">
+    <style name="ubuntu_normal">
         <item name="android:fontFamily">@font/ubuntu_regular</item>
         <item name="fontFamily">@font/ubuntu_regular</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:gravity">center</item>
+    </style>
 
+    <!-- More Specific Styles -->
+    <style name="_gen_heading" parent="ubuntu_bold">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="heading_light" parent="_gen_heading">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="heading_dark" parent="_gen_heading">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="btn_main" parent="heading_light">
+        <item name="android:backgroundTint">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">@color/sea_salt</item>
+
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="maxWidth">@dimen/btn_max_width</item>
+        <item name="android:padding">@dimen/light_padding</item>
+    </style>
+
+    <style name="light_button">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:backgroundTint">?attr/colorOnPrimary</item>
+        <item name="minHeight">@dimen/btn_min_height</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+    </style>
+
+    <!-- Entry Styles -->
+    <style name="entry_title" parent="heading_dark">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="entry_date" parent="ubuntu_normal">
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/rich_black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- List Item's Constraint Layouts -->
     <style name="constraint_list_item">
-        <item name="android:paddingHorizontal">4dp</item>
-        <item name="android:paddingVertical">2dp</item>
+        <item name="android:paddingLeft">@dimen/light_padding</item>
+        <item name="android:paddingRight">@dimen/light_padding</item>
+        <item name="android:paddingTop">@dimen/extra_light_padding</item>
+        <item name="android:paddingBottom">@dimen/extra_light_padding</item>
+
         <item name="layout_constraintHeight_default">spread</item>
         <item name="layout_constraintHeight_max">100dp</item>
         <item name="layout_constraintHeight_min">50dp</item>
     </style>
 
+    <!-- List Item's Linear Layouts -->
     <style name="linear_layout_list_item">
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">@dimen/extra_light_padding</item>
     </style>
 
+    <!-- Spinners -->
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
         <item name="backgroundColor">@color/sea_salt</item>
         <item name="android:textColor">@color/sea_salt</item>
@@ -77,41 +106,36 @@
         <item name="android:popupBackground">@drawable/purple_outline_white_background</item>
         <item name="android:spinnerMode">dropdown</item>
         <item name="listItemLayout">@layout/rover_spinner</item>
-        <item name="android:paddingHorizontal">@dimen/spinner_padding_horizontal</item>
-        <item name="android:paddingVertical">@dimen/spinner_padding_vertical</item>
+        <item name="android:paddingLeft">@dimen/light_padding</item>
+        <item name="android:paddingRight">@dimen/light_padding</item>
+        <item name="android:paddingTop">@dimen/extra_light_padding</item>
+        <item name="android:paddingBottom">@dimen/extra_light_padding</item>
     </style>
 
     <style name="app_intro">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/rich_black</item>
-        <item name="android:justificationMode">inter_word</item>
     </style>
 
-    <style name="light_heading">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">32sp</item>
-        <item name="fontFamily">@font/ubuntu_bold</item>
-        <item name="android:fontFamily">@font/ubuntu_bold</item>
-
-        <item name="android:textColor">@color/sea_salt</item>
-    </style>
-    
-    <style name="light_button">
-        <item name="android:textColor">@color/tekhelet</item>
-        
-        <item name="minHeight">30dp</item>
-        <item name="android:backgroundTint">@color/sea_salt</item>
-        <item name="elevation">1dp</item>
-        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
-    </style>
-
-    <style name="fab_add">
+    <!-- FABs -->
+    <style name="fab">
         <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">16dp</item>
-        <item name="backgroundTint">@color/tekhelet</item>
+        <item name="backgroundTint">?attr/colorPrimaryVariant</item>
+        <item name="tint">?attr/colorOnPrimary</item>
 
         <item name="srcCompat">@drawable/ic_plus_24</item>
-        <item name="tint">@color/sea_salt</item>
+    </style>
+
+    <!-- Carousel -->
+    <style name="carousel_heading" parent="ubuntu_bold">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/sea_salt</item>
+    </style>
+
+    <style name="home_carousel">
+        <item name="android:clipChildren">false</item>
+        <item name="android:clipToPadding">false</item>
     </style>
 </resources>

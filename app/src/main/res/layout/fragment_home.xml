@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".home.HomeFragment"
     android:clipChildren="false"
     android:clipToPadding="false">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/home_banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="7.5dp"
-            style="@style/Ubuntu_Bold"
-            android:textColor="@color/white"
-            android:textAllCaps="true"
-            app:fontWeight="700"
-            android:textAlignment="center"
-            android:textSize="32sp"/>
+    <TextView
+        android:id="@+id/home_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="7.5dp"
+        style="@style/heading_light" />
 
 <!--        <LinearLayout-->
 <!--            android:id="@+id/intro_card"-->
@@ -42,46 +34,44 @@
 
 <!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:id="@+id/apod_carousel"
+    <LinearLayout
+        android:id="@+id/apod_carousel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            style="@style/carousel_heading"
+            android:text="@string/apod_carousel_heading"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="APODs"/>
-
-            <com.example.finalproject.home.carousel.CarouselRecyclerView
-                android:id="@+id/apod_carousel_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="196dp"
-                android:clipChildren="false"
-                android:clipToPadding="false" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/rover_carousel"
+        <com.example.finalproject.home.carousel.CarouselRecyclerView
+            android:id="@+id/apod_carousel_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rovers"/>
-
-            <com.example.finalproject.home.carousel.CarouselRecyclerView
-                android:id="@+id/rover_carousel_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="196dp"
-                android:clipChildren="false"
-                android:clipToPadding="false" />
-
-        </LinearLayout>
+            android:layout_height="@dimen/carousel_height"
+            style="@style/home_carousel" />
 
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/rover_carousel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/carousel_heading"
+            android:text="@string/rover_carousel_heading"/>
+
+        <com.example.finalproject.home.carousel.CarouselRecyclerView
+            android:id="@+id/rover_carousel_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/carousel_height"
+            style="@style/heading_light" />
+
+    </LinearLayout>
+
+</LinearLayout>

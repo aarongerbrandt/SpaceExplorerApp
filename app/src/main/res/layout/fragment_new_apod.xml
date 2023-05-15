@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/light_heading"
+        style="@style/heading_light"
         android:text="@string/select_date" />
 
     <Button
