@@ -10,7 +10,7 @@ import com.example.finalproject.util.DateFormats
 class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(rover: Rover) {
-        binding.roverCamera.text = rover.camera_name
+        binding.roverCamera.text = rover.camera_full_name
         binding.roverEarthDate.text = DateFormats.SIMPLE_OUTPUT_FORMAT.format(rover.earth_date)
         Glide.with(itemView.context)
             .load(rover.img_src)
@@ -19,6 +19,7 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
 
         binding.roverImageView.contentDescription = "Image from ${rover.camera_full_name}"
 
+        // TODO: Add transition
         binding.root.setOnClickListener {
             Toast.makeText(
                 binding.root.context,
@@ -28,13 +29,9 @@ class RoverHolder(private val binding: ListItemRoverBinding): RecyclerView.ViewH
         }
 
         binding.root.setOnLongClickListener {
-            if(binding.roverCamera.visibility == View.GONE) { //TODO: Finish this
-                binding.roverCamera.visibility = View.VISIBLE
-                binding.roverEarthDate.visibility = View.VISIBLE
+            if(binding.roverImageView.visibility == View.GONE) {
                 binding.roverImageView.visibility = View.VISIBLE
             } else {
-                binding.roverCamera.visibility = View.GONE
-                binding.roverEarthDate.visibility = View.GONE
                 binding.roverImageView.visibility = View.GONE
             }
 

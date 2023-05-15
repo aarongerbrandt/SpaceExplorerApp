@@ -116,7 +116,6 @@ class NewApodFragment : Fragment() {
                     vp.setCurrentItem(ApodListFragment.FRAGMENT_NUMBER, false)
                 },
                 error_callback = { volleyError ->
-                    //TODO: Consider non-toast alternatives
                     Log.d("ApodVolleyError", "Got error: ${volleyError.networkResponse.statusCode}")
                     val response = when(volleyError.networkResponse.statusCode) {
                         400 -> "Invalid date! You can only request the current date or earlier."
