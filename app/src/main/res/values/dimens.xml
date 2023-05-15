@@ -21,11 +21,10 @@
     <!-- List Item -->
     <dimen name="img_vertical_padding">2dp</dimen>
 
-    <!-- Spinner -->
-    <dimen name="spinner_padding_horizontal">4dp</dimen>
-    <dimen name="spinner_padding_vertical">4dp</dimen>
-    <dimen name="item_height">32sp</dimen>
+    <!-- Container -->
+    <dimen name="container_corner_radius">12dp</dimen>
 
     <!-- Carousel -->
     <dimen name="carousel_height">294dp</dimen>
+    <dimen name="carousel_card_corner_radius">8dp</dimen>
 </resources>

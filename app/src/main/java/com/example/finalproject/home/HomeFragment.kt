@@ -65,11 +65,11 @@ class HomeFragment : Fragment() {
         binding.apodCarouselRecyclerView.isNestedScrollingEnabled = false
 
         val carouselItems = if(apods.isNotEmpty()) {
-            binding.apodCarousel.visibility = View.VISIBLE
+            binding.apodCarouselRecyclerView.visibility = View.VISIBLE
             binding.homeBanner.text = getString(R.string.home_welcome_back_message)
             if(apods.size > numItemsInCarousel) apods.shuffled().subList(0, numItemsInCarousel) else apods
         } else {
-            binding.apodCarousel.visibility = View.GONE
+            binding.apodCarouselRecyclerView.visibility = View.GONE
             emptyList()
         }
 
@@ -85,11 +85,11 @@ class HomeFragment : Fragment() {
 
 
         val carouselItems = if(rovers.isNotEmpty()) {
-            binding.roverCarousel.visibility = View.VISIBLE
+            binding.roverCarouselRecyclerView.visibility = View.VISIBLE
             binding.homeBanner.text = getString(R.string.home_welcome_back_message)
             if (rovers.size > numItemsInCarousel) rovers.shuffled().subList(0, numItemsInCarousel) else rovers
         } else {
-            binding.roverCarousel.visibility = View.GONE
+            binding.roverCarouselRecyclerView.visibility = View.GONE
             emptyList()
         }
 

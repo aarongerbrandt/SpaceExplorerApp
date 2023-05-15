@@ -57,7 +57,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <!-- List Item's Constraint Layouts -->
+    <!-- Containers -->
     <style name="constraint_list_item">
         <item name="android:paddingLeft">@dimen/light_padding</item>
         <item name="android:paddingRight">@dimen/light_padding</item>
@@ -69,53 +69,9 @@
         <item name="layout_constraintHeight_min">50dp</item>
     </style>
 
-    <!-- List Item's Linear Layouts -->
-    <style name="linear_layout_list_item">
-        <item name="android:padding">@dimen/extra_light_padding</item>
-    </style>
-
-    <!-- Spinners -->
-    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
-        <item name="backgroundColor">@color/sea_salt</item>
-        <item name="android:textColor">@color/sea_salt</item>
-        <item name="android:fontFamily">@font/ubuntu_bold</item>
-        <item name="fontFamily">@font/ubuntu_bold</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
-        <item name="android:fontFamily">@font/ubuntu_bold</item>
-        <item name="fontFamily">@font/ubuntu_bold</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
-
-        <item name="color">@color/resolution_blue</item>
-        <item name="textAllCaps">true</item>
-    </style>
-
-    <style name="rover_spinner_text">
-        <item name="android:fontFamily">@font/ubuntu_regular</item>
-        <item name="fontFamily">@font/ubuntu_regular</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:gravity">center</item>
-    </style>
-
-    <style name="rover_spinner">
-        <item name="background">@drawable/purple_outline</item>
-        <item name="android:popupBackground">@drawable/purple_outline_white_background</item>
-        <item name="android:spinnerMode">dropdown</item>
-        <item name="listItemLayout">@layout/rover_spinner</item>
-        <item name="android:paddingLeft">@dimen/light_padding</item>
-        <item name="android:paddingRight">@dimen/light_padding</item>
-        <item name="android:paddingTop">@dimen/extra_light_padding</item>
-        <item name="android:paddingBottom">@dimen/extra_light_padding</item>
-    </style>
-
-    <style name="app_intro">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/rich_black</item>
+    <style name="container_light">
+        <item name="android:padding">@dimen/general_margin</item>
+        <item name="cornerRadius">@dimen/container_corner_radius</item>
     </style>
 
     <!-- FABs -->
@@ -129,13 +85,18 @@
     </style>
 
     <!-- Carousel -->
-    <style name="carousel_heading" parent="ubuntu_bold">
+    <style name="carousel_heading" parent="heading_light">
         <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/sea_salt</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
     </style>
 
     <style name="home_carousel">
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
     </style>
+
+    <style name="carousel_image">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 </resources>

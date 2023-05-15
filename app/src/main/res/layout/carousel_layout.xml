@@ -10,11 +10,18 @@
     android:foreground="?attr/selectableItemBackgroundBorderless"
     app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
 
-    <ImageView
-        android:id="@+id/carousel_image_view"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/carousel_image_placeholder"/>
+        app:cardCornerRadius="@dimen/carousel_card_corner_radius">
+
+        <ImageView
+            android:id="@+id/carousel_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/carousel_image_placeholder"
+            style="@style/carousel_image" />
+
+    </androidx.cardview.widget.CardView>
 
 </com.google.android.material.carousel.MaskableFrameLayout>
